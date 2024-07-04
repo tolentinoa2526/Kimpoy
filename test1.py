@@ -251,6 +251,7 @@ class Converter:
         self.boundary_result_error.config(text=output)
 
     def show_help(self):
+        self.help_button.config(state=DISABLED)  # Disable help button when pressed
         help_window = Toplevel()
         help_window.title("Help")
 
@@ -266,9 +267,13 @@ class Converter:
         help_label = Label(help_window, text=help_text, font=("Arial", "12"), justify=LEFT)
         help_label.pack(padx=10, pady=10)
 
-        dismiss_button = Button(help_window, text="Dismiss", command=help_window.destroy, font=("Arial", "12", "bold"),
-                                bg="#FF5733", fg="#FFFFFF")
+        dismiss_button = Button(help_window, text="Dismiss", command=lambda: self.close_help(help_window),
+                                font=("Arial", "12", "bold"), bg="#FF5733", fg="#FFFFFF")
         dismiss_button.pack(pady=10)
+
+    def close_help(self, help_window):
+        help_window.destroy()
+        self.help_button.config(state=NORMAL)  # Re-enable help button when help window is closed
 
 
 # Main routine
