@@ -28,8 +28,8 @@ class Converter:
                                       )
         self.boundary_heading.grid(row=0)
 
-        instructions = "This is a tests about Movie Quotes, " \
-                       "where ypu pick a movie that belongs to the " \
+        instructions = "This is a test about Movie Quotes, " \
+                       "where you pick a movie that belongs to the " \
                        "character."
         self.boundary_instruction = Label(self.boundary_frame,
                                           text=instructions,
@@ -61,13 +61,13 @@ class Converter:
     def check_boundary(self):
 
         has_error = "no"
-        error = "Please enter a number between 1 and 10."
+        error = "Please enter a whole number between 1 and 10."
 
-        # Check that user has entered a valid number
+        # Check that the user has entered a valid whole number
         response = self.boundary_entry.get()
 
         try:
-            response = float(response)
+            response = int(response)  # Ensure the input is an integer
 
             if response < 1 or response > 10:
                 has_error = "yes"
