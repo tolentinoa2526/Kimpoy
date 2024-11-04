@@ -18,8 +18,8 @@ class Converter:
 
         self.all_calculations = []
 
-        # Common format for all buttons
-        self.button_font = ("Arial", "12", "bold")
+        # Common format for all butto ns
+        self.button_font = ("Arial",  "12", "bold")
         self.button_fg = "#FFFFFF"
         self.button_width = 12  # Consistent width for all buttons
 
@@ -136,7 +136,7 @@ class Converter:
 
     def to_play(self, num_rounds):
         self.play_window = Play(self.root, num_rounds, self.all_quotes, self.var_feedback, self.all_calculations)
-        self.root.withdraw()  # Hide the main window when starting the quiz
+        self.root.withdraw()
 
     def output_answer(self):
         output = self.var_feedback.get()
@@ -197,7 +197,7 @@ class Play:
         self.quiz_question = Label(self.quest_frame,
                                    text=quote,
                                    font=("Arial", "14"),
-                                   wraplength=300,  # The text will wrap after 300 pixels
+                                   wraplength=300,
                                    justify="left")
         self.quiz_question.grid(row=1, columnspan=3, pady=10)
 
@@ -243,7 +243,6 @@ class Play:
                                     font=("Arial", "12"))
         self.feedback_label.grid(row=6, columnspan=3, pady=10)
 
-        # Control buttons (Help, Stats, Play Again)
         self.control_buttons_frame = Frame(self.quest_frame)
         self.control_buttons_frame.grid(row=7, columnspan=3, pady=10)
 
@@ -306,7 +305,7 @@ class Play:
         self.quiz_completed = True
         self.var_feedback.set(f"Quiz Complete!\nYou answered {self.correct_answers} out of {self.how_many} correctly.")
 
-        # Display the statistics directly in the current window (replace content in quest_frame)
+        # Display the statistics directly in the current window
         for widget in self.quest_frame.winfo_children():
             widget.destroy()
 
@@ -386,7 +385,7 @@ class DisplayHelp:
                                      command=partial(self.close_help, partner))
         self.dismiss_button.pack(pady=(5, 10))
 
-    # closes help dialogue (used by button and x at top of dialogue)
+    # closes help dialogue
     def close_help(self, partner):
         # put help button back to normal...
         partner.help_button.config(state=NORMAL)
