@@ -7,6 +7,7 @@ import re
 
 class Converter:
     def __init__(self, root):
+        # This part was added by ChatGpt when I added the csv file
         self.root = root  # Use the root window passed in the main routine
         self.root.title("Movie Quiz")
 
@@ -18,10 +19,10 @@ class Converter:
 
         self.all_calculations = []
 
-        # Common format for all butto ns
+        # Common format for all buttons
         self.button_font = ("Arial",  "12", "bold")
         self.button_fg = "#FFFFFF"
-        self.button_width = 12  # Consistent width for all buttons
+        self.button_width = 12  # Consistent width for all buttons (ChatGpt)
 
         # Set up GUI Frame
         self.boundary_frame = Frame(self.root, padx=10, pady=10)
@@ -124,7 +125,7 @@ class Converter:
 
     # Rest of the class methods...
 
-    def load_quotes(self):
+    def load_quotes(self):     #(ChatGpt)
         self.all_quotes = []
         with open("movie_quotes.csv", "r") as file:
             reader = csv.reader(file, delimiter=",")
@@ -165,7 +166,7 @@ class Play:
 
         self.play_box = Toplevel()
         self.play_box.title("Movie Quiz")
-        self.play_box.geometry(f"+100+100")
+        self.play_box.geometry(f"+100+100") #(ChatGpt)
 
         self.user_scores = []
         self.computer_scores = []
@@ -180,7 +181,7 @@ class Play:
         random.shuffle(self.all_quotes)
         self.display_question()
 
-    def display_question(self):
+    def display_question(self): #(ChatGpt)
         if self.current_round > self.how_many or self.current_round > len(self.all_quotes):
             self.quiz_completed = True
             self.show_statistics()
@@ -201,7 +202,7 @@ class Play:
                                    justify="left")
         self.quiz_question.grid(row=1, columnspan=3, pady=10)
 
-        options = [answer]
+        options = [answer]  #(ChatGpt)
         while len(options) < 3:
             random_quote = random.choice(self.all_quotes)[1]
             if random_quote not in options:
@@ -225,7 +226,7 @@ class Play:
                                   state=DISABLED)
         self.next_button.grid(row=5, columnspan=3, pady=10)
 
-        for i, option in enumerate(options):
+        for i, option in enumerate(options):  #(ChatGpt)
             answer_button = Button(self.quest_frame,
                                    text=option,
                                    font=("Arial", "12", "bold"),
@@ -301,7 +302,7 @@ class Play:
             widget.destroy()
         self.display_question()
 
-    def show_statistics(self):
+    def show_statistics(self):  #(ChatGpt)
         self.quiz_completed = True
         self.var_feedback.set(f"Quiz Complete!\nYou answered {self.correct_answers} out of {self.how_many} correctly.")
 
